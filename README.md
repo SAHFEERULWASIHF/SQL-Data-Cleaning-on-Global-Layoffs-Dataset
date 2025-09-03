@@ -42,7 +42,7 @@ Through systematic SQL transformations, these issues were resolved and a **clean
 
 ## 📂 Repository Structure
 ```
-Data-Cleaning-Layoffs-Project/
+SQL-Data-Cleaning-on-Global-Layoffs-Dataset/
 │── README.md
 │── Data_Cleaning_Project_using_layoffs_data.sql
 │
