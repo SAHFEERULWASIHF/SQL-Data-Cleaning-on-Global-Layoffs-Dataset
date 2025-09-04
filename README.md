@@ -28,10 +28,10 @@ Through systematic SQL transformations, these issues were resolved and a **clean
   - `total_laid_off` – Number of employees laid off  
   - `percentage_laid_off` – Layoff percentage  
   - `date` – Date of layoff  
+  - `date_added` – Date when record was added  
   - `stage` – Company funding stage  
   - `country` – Country of the company  
-  - `funds_raised` – Funds raised by the company
-  - `date_added` - the date when data was updated in the table
+  - `funds_raised` – Funds raised by the company  
   - `source` - information source
 
 ---
