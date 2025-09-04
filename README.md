@@ -1,4 +1,4 @@
-# 🧹 Data Cleaning Project - Layoffs Dataset
+# 🧹 SQL Data Cleaning on Global Layoffs
 
 This project focuses on cleaning a dataset of company layoffs to prepare it for further **Exploratory Data Analysis (EDA)**.  
 The data cleaning was performed entirely in **SQL (MySQL)**.
@@ -19,23 +19,51 @@ Through systematic SQL transformations, these issues were resolved and a **clean
 
 ---
 
+## Dataset
+- **Source:** Public dataset of global layoffs (CSV imported into SQL database).  
+- **Columns include:**  
+  - `company` – Name of the company  
+  - `location` – City or region of the company  
+  - `industry` – Industry sector  
+  - `total_laid_off` – Number of employees laid off  
+  - `percentage_laid_off` – Layoff percentage  
+  - `date` – Date of layoff  
+  - `stage` – Company funding stage  
+  - `country` – Country of the company  
+  - `funds_raised` – Funds raised by the company
+  - `date_added` - the date when data was updated in the table
+  - `source` - information source
+
+---
+
 ## ⚙️ Steps in Data Cleaning
 
-1. **Remove Duplicates**
-   - Created a distinct table `layoffs_duplicate2`.
+### 1. Back up the Original Data
+- Created a backup table `layoffs_duplicate` to preserve the original dataset before manipulation.
 
-2. **Standardize Data**
-   - Trimmed whitespace from company names.
-   - Unified industry names (e.g., `cryptoCurrency` → `Crypto`).
-   - Standardized country names (`United States.` → `United States`).
-   - Converted `date` column into proper `DATE` format.
+### 2. Remove Duplicates
+- Identified duplicates using `ROW_NUMBER()` in a **CTE** partitioned by all key columns.  
+- Removed duplicates by keeping only the first occurrence.
 
-3. **Handle Null Values**
-   - Replaced blank industry fields with `NULL`.
-   - Used `JOIN` logic to populate missing industries where possible.
-   - Deleted rows with both `total_laid_off` and `percentage_laid_off` as NULL.
+### 3. Standardize Data
+- Trimmed whitespace from `company` names.  
+- Standardized country names (e.g., `united arab emirates` → `UAE`).  
+- Converted date columns (`date`, `date_added`) to SQL `DATE` type.  
+- Converted numeric columns:  
+  - `total_laid_off` → `BIGINT`  
+  - `percentage_laid_off` → `DECIMAL(5,1)`  
+  - `funds_raised` → `BIGINT`  
 
-4. **Final Output**
+### 4. Handle Null Values
+- Converted empty strings to `NULL`.  
+- Populated missing `country` values using corresponding `location`.  
+- Checked and handled nulls in `industry` column.  
+- Deleted rows where both `total_laid_off` and `percentage_laid_off` were null.
+
+### 5. Drop Unnecessary Columns
+- Dropped temporary columns such as `rn` used for deduplication.
+  
+### 6. **Final Output**
    - Exported the cleaned dataset into `cleaned_data/clean_data_layoffs.csv`.
 
 ---
@@ -80,9 +108,18 @@ SQL-Data-Cleaning-on-Global-Layoffs-Dataset/
     ```
 ## 🛠️ Tools & Technologies
 
-SQL (MySQL)
-
-CSV Data
+- **SQL (MySQL)** – For data cleaning, transformation, and manipulation.  
+- **SQL Queries Used:**  
+  - `CREATE TABLE` / `INSERT INTO`  
+  - `ROW_NUMBER()` with `OVER(PARTITION BY ...)` for deduplication  
+  - `UPDATE` and `TRIM()` for standardization  
+  - `ALTER TABLE` for modifying data types  
+  - `DELETE` to remove incomplete records
+ 
+## Final Outcome
+- Cleaned dataset: `clean_data_layoffs.csv`  
+- Row count after cleaning: **3,458 rows**  
+- Dataset ready for **Exploratory Data Analysis (EDA)** and visualization.
 
 ## 📊 Future Work
 
