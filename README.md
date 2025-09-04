@@ -1,5 +1,10 @@
 # 🧹 SQL Data Cleaning on Global Layoffs
 
+[![SQL](https://img.shields.io/badge/SQL-MySQL-blue?logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![GitHub stars](https://img.shields.io/github/stars/SAHFEERULWASIHF/SQL-Data-Cleaning-on-Global-Layoffs-Dataset?style=social)](https://github.com/SAHFEERULWASIHF/SQL-Data-Cleaning-on-Global-Layoffs-Dataset/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/SAHFEERULWASIHF/SQL-Data-Cleaning-on-Global-Layoffs-Dataset?style=social)](https://github.com/SAHFEERULWASIHF/SQL-Data-Cleaning-on-Global-Layoffs-Dataset/network/members)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 This project focuses on cleaning a dataset of company layoffs to prepare it for further **Exploratory Data Analysis (EDA)**.  
 The data cleaning was performed entirely in **SQL (MySQL)**.
 
